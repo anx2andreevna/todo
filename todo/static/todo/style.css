@@ -1,0 +1,100 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+main{
+    margin-top: 50px;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+h1 {
+    color: rebeccapurple;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+ul{
+    padding-left: 15px;
+}
+a{
+    text-decoration: none;
+    font-size: 18px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 50%;
+}
+/* Стили для формы */
+.task-form {
+    margin-bottom: 20px;
+    border: rebeccapurple 5px solid;
+    padding: 10px;
+}
+
+/* Стили для списка задач */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Стили для элемента задачи */
+.task-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Стили для сообщения о отсутствии задач */
+.no-tasks {
+    font-style: italic;
+    color: #777;
+}
+.tasks-link {
+    margin-top: 20px;
+    text-decoration: underline;
+
+}

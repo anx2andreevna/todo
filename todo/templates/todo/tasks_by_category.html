@@ -1,0 +1,56 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Задачи в категории "{{ category.name }}"{% endblock %}
+
+{% block content %}
+<div class="container">
+        <h1 class="title">Задачи в категории "{{ category.name }}"</h1>
+
+        <!-- Форма для создания новой задачи -->
+        <form method="post" class="task-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Создать задачу</button>
+        </form>
+
+        <h2>Список задач:</h2>
+        <ul class="task-list">
+            {% if tasks %}
+                {%if tasks__notcompleted %}
+                    {% for task in tasks__notcompleted %}
+                        <li class="task-item">
+                            <strong>{{ task.title }}</strong>
+                            <p>Описание: {{ task.description }}</p>
+                            <p>Срок выполнения: {{ task.due_date }}</p>
+                            <p>Завершено: {% if task.completed %}Да{% else %}Нет{% endif %}</p>
+                            <p>Категория: {{ task.category }}</p>
+                            <p>Метки:
+                                {% for tag in task.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                            </p>
+                            <p>Приоритет: {{ task.priority }}</p>>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="no-tasks">Нет активных задач в данной категории.</li>
+                {% endif %}
+                {% if tasks__completed %}
+                    <h3>Завершенные задачи:</h3>
+                    {% for task in tasks__completed %}
+                        <li class="task-item">
+                        <strong>{{ task.title }}</strong>
+                        <p>Описание: {{ task.description }}</p>
+                        <p>Срок выполнения: {{ task.due_date }}</p>
+                        <p>Завершено: Да</p>
+                        <p>Категория: {{ task.category }}</p>
+                        <p>Метки:
+                            {% for tag in task.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                        </p>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                <li class="no-tasks">Нет задач в данной категории.</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

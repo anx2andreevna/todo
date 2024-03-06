@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Все задачи{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Список всех задач:</h1>
+        <ul class="task-list">
+            {% if tasks %}
+                {% for task in tasks %}
+                    <li class="task-item">
+                        <strong>{{ task.title }}</strong>
+                        <p>Описание: {{ task.description }}</p>
+                        <p>Срок выполнения: {{ task.due_date }}</p>
+                        <p>Завершено: {% if task.completed %}Да{% else %}Нет{% endif %}</p>
+                        <p>Категория: {{ task.category }}</p>
+                        <p>Метки:
+                            {% for tag in task.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                        </p>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>Нет задач.</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Задачи в категории "{{ category.name }}"{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Список категорий</h1>
+        <ul>
+            {% if categories %}
+                {% for category in categories %}
+                    <li><a href="{% url 'tasks_by_category' category_id=category.id %}">{{ category.name }}</a></li>
+                {% endfor %}
+            {% else %}
+                <li>Нет доступных категорий.</li>
+            {% endif %}
+        </ul>
+        {% if tasks %}
+            <a class="tasks-link" href="{% url 'tasks_list' %}"> Посмотреть все задачи </a>
+        {% endif %}
+    </div>
+{% endblock %}
